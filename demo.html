@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+	<link rel="stylesheet" href="jquery-kindeditor-suggest/kindeditor-suggest.css"/>
+	<script type="text/javascript" src="lib/jquery.js"></script>
+	<script type="text/javascript" src="lib/kindeditor-4.1.6/kindeditor.js"></script>
+	<script type="text/javascript" src="jquery-kindeditor-suggest/kindeditor-suggest.js"></script>
+	<style>
+		html,body{
+			width : 100%;
+			height : 100%;
+			margin:0;
+			overflow: hidden;
+		}
+		.demo{
+			border: 1px solid #EFC17D;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h2>演示</h2>
+	<div class="demo">
+		<textarea class="inputText" name="text" id="" cols="30" rows="3"></textarea>
+	</div>
+	<script>
+	KindEditor.create($(".inputText"), {
+		'height' : "65px",
+		'width': '100%',
+		'resizeType' : 0,
+		'items': [],
+		'allowUpload': false,
+		'filterMode':true,
+		'newlineTag': 'br',
+		'htmlTags': {
+			p : [],
+			img : ['src'],
+			br : [],
+			div: [],
+			span : ['id','contenteditable']
+		},
+		'cssData' : "span[contenteditable]{  cursor:pointer; color: #0093DD; border: none; " +
+						 "display: inline-block; background: none;}" ,
+		'afterCreate' : function() {
+			var _self = this;
+			 
+			var data = [{ 
+				name:"全体成员", pinyin:'quantichengyuan'
+			},{ 
+				name:"刘亦菲", pinyin:'liuyifei'
+			},{ 
+				name:"高圆圆", pinyin:'gaoyuanyuan'
+			},{ 
+				name:"胡歌", pinyin:'huge'
+			},{ 
+				name:"张怡宁", pinyin:'zhangyining'
+			},{ 
+				name:"谢逊", pinyin:'xiexun'
+			},{ 
+				name:"白静", pinyin:'baijing'
+			},{ 
+				name:"海角", pinyin:'haijiao'
+			},{ 
+				name:"孙悟空", pinyin:'sunwukong'
+			},{ 
+				name:"八戒", pinyin:'bajie'
+			},{ 
+				name:"贾静雯", pinyin:'jiajingwen'
+			},{ 
+				name:"贾宝玉", pinyin:'jiabaoyun'
+			},{ 
+				name:"薛宝钗", pinyin:'xuebaochai'
+			},{ 
+				name:"阿一", pinyin:'ayi'
+			}];
+			
+			$(_self).suggest('@', {
+				data : data,
+				mapkey : ['name','pinyin'],
+				map : function(user) {
+					return {
+						value : user.name,
+						text : '<small>' + user.name + '</small>'
+					}
+				}
+			});
+		}
+	});
+	</script>
+</body>
+</html>
