@@ -6,5 +6,6 @@
 3. 修正偶数行@功能失效。
 
 效果如下：
+
 ![](https://github.com/codingforme/jquery-kindeditor-suggest/blob/master/screenshots/1.png)
  
